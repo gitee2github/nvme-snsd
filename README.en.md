@@ -1,36 +1,28 @@
 # redf
 
 #### Description
-Reliable enterprise data fabric for nvme over fabric
+REDF is a set of Many plug-ins for reliable data transfer assistance for nvme over fabric SAN storage networks. The plug-ins can be deployed on the host side or the storage side and defines a set of transmission interface definitions. The two ends of communication transmission and the middle switch device must support the transmission interface. For details, see the spetcial definition of the corresponding plug-in README. These plug-in also describes the supported Operating system environment and device types.
+
 
 #### Software Architecture
 Software architecture description
+The plug-in is deployed on the SAN, host nodes, and storage nodes. After the deployment is complete, the host and storage nodes register devices with the switch. The switch stores network device registration information to the database. In addition, the switch synchronizes information to other switches on the SAN and other storage devices. The host device node and host device determine whether the storage device is online and proactively discovers and logs in to the storage device. In this way, the disk objects of the storage device can be quickly scanned. In addition, when a device is offline (for example, a fault exits or a zone member exits), the host quickly detects that the device is offline and switches to another path to access the device.    
+SNSD:    
+snsd_main: initialization module    
+snsd_nvme: NVME cmd execution module    
+snsd_reg: device information registration module    
+snsd_connect: device discovery and automatic connect module    
+snsd_conn_peon: Connect task scheduling and execution module    
+snsd_direct: network device processing module in direct networking    
+snsd_server: network message processing module in switch networking    
+snsd_mgt: device information obtaining and management module    
+snsd_cfg: configuration file parsing module    
+Others: tools and other related modules    
 
 #### Installation
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+For details, see the corresponding plug-in installation guide.
 
 #### Instructions
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+For details, see the corresponding plug-in usage description.
