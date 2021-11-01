@@ -1,37 +1,28 @@
 # redf
 
 #### 介绍
-Reliable enterprise data fabric for nvme over fabric
-
+REDF是为nvme over fabric 的SAN存储网络提供的可靠数据传输辅助相关的功能的插件。该插件可以部署在主机侧，也可以部署在存储侧，同时会定义一套传输接口定义。通信传输的双方以及交换机设备需要支持该传输接口，具体的详细见对应的插件README定义。同时该插件会说明支持的操作系统类型和设备类型。
 #### 软件架构
 软件架构说明
+在SAN网络中、主机节点和存储节点分别部署该插件，部署完成后主机和存储节点向交换机完成相关的设备注册、交换机负责把网络设备注册的信息存储到DB内、并在SAN网络中的其他交换机完成信息同步、并同步到其他存储和主机设备节点、主机设备判断是存储设备上线、并主动完成与存储设备的发现和登录流程、可以快速的扫描到存储设备的磁盘对象。同时，在设备离线场景下（故障退出，zone 成员退出），主机快速感知到设备离线，并切换其他路径访问设备。    
 
-
+SNSD:    
+snsd_main: 初始化模块    
+snsd_nvme: nvme cmd 执行模块    
+snsd_reg: 设备信息注册模块    
+snsd_connect: 设备发现和自动connect模块    
+snsd_conn_peon: connect 任务调度和执行模块    
+snsd_direct: 直连组网下，网络设备处理模块    
+snsd_server: 交换组网下，网络消息处理模块    
+snsd_mgt: 设备信息获取和管理模块    
+snsd_cfg:  配置文件解析模块    
+其他：工具和其他相关模块    
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+具体操作请参见对应的插件安装指南。
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+具体操作请参见对应的插件使用说明。
 
 
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
