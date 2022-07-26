@@ -1266,7 +1266,7 @@ static void snsd_connect_change(nt_msg *msg, unsigned char type)
             (void *)msg->nt_msg.ip_tlv.ipv6.src.ip, IPV6_ADDR_LENGTH);
     }
 
-    strncpy((void *)param.subsysnqn, (void *)msg->nt_msg.ad_info_tlv.ad_info.nqn,
+    memcpy((void *)param.subsysnqn, (void *)msg->nt_msg.ad_info_tlv.ad_info.nqn,
         SNSD_NQN_MAX_LEN);
     param.subsysnqn[SNSD_NQN_MAX_LEN - 1] = '\0';
     param.protocol = msg->nt_msg.ad_info_tlv.ad_info.proto_type;
